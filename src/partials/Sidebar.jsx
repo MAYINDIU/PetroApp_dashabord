@@ -195,6 +195,79 @@ function Sidebar({
                 </SidebarLinkGroup>
                    </ul>
 
+            <ul className="mt-1">
+                <SidebarLinkGroup activecondition={pathname === "/single-driver-topup" || pathname.includes("/single-driver-topup")}>
+                  {(handleClick, open) => {
+                    return (
+                      <React.Fragment>
+                        <Link
+                          to="/single-driver-topup"
+                          className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 ${
+                            pathname === "/single-driver-topup" || pathname.includes("dashboard") || pathname.includes("/single-driver-topup") 
+                              ? "" 
+                              : "hover:text-gray-900 dark:hover:text-white"
+                          }`}
+                          onClick={() => {
+                            handleClick();
+                            setSidebarExpanded(true);
+                          }}
+                        >
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center">
+                              <AiOutlineContainer 
+                                className={`shrink-0 fill-current ${pathname === "/single-driver-topup" || pathname.includes("dashboard") || pathname.includes("/single-driver-topup") 
+                                  ? 'text-violet-500' 
+                                  : 'text-gray-400 dark:text-gray-500'}`}
+                              />
+                              <span className="text-sm font-medium ml-4 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                         Single Driver Topup
+                              </span>
+                            </div>
+                          </div>
+
+                        </Link>
+                      </React.Fragment>
+                    );
+                  }}
+                </SidebarLinkGroup>
+                   </ul>
+                   
+                      <ul className="mt-1">
+                <SidebarLinkGroup activecondition={pathname === "/multiple-driver-topup" || pathname.includes("/multiple-driver-topup")}>
+                  {(handleClick, open) => {
+                    return (
+                      <React.Fragment>
+                        <Link
+                          to="/multiple-driver-topup"
+                          className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 ${
+                            pathname === "/multiple-driver-topup" || pathname.includes("dashboard") || pathname.includes("/multiple-driver-topup") 
+                              ? "" 
+                              : "hover:text-gray-900 dark:hover:text-white"
+                          }`}
+                          onClick={() => {
+                            handleClick();
+                            setSidebarExpanded(true);
+                          }}
+                        >
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center">
+                              <AiOutlineContainer 
+                                className={`shrink-0 fill-current ${pathname === "/multiple-driver-topup" || pathname.includes("dashboard") || pathname.includes("/multiple-driver-topup") 
+                                  ? 'text-violet-500' 
+                                  : 'text-gray-400 dark:text-gray-500'}`}
+                              />
+                              <span className="text-sm font-medium ml-4 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                         Multiple Driver Topup
+                              </span>
+                            </div>
+                          </div>
+
+                        </Link>
+                      </React.Fragment>
+                    );
+                  }}
+                </SidebarLinkGroup>
+                   </ul>
                    
 
             
