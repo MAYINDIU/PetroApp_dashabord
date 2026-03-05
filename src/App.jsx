@@ -26,6 +26,8 @@ import TransportEntry from './pages/Transport_owner/TransportEntry';
 import CreateDriver from './pages/Transport_owner/CreateDriver';
 import SingleDriverTopup from './pages/TopUp/SingleDriverTopup';
 import MultipleDriverTopup from './pages/TopUp/MultipleDriverTopup';
+import StationLedger from './pages/Ledger/StationLedger';
+import AssignDriver from './pages/Transport_owner/AssignDriver';
 
 function App() {
 
@@ -48,11 +50,14 @@ const queryClient = new QueryClient();
     <Route exact path="/single-driver-topup" element={<SingleDriverTopup />} />
     <Route exact path="/multiple-driver-topup" element={<MultipleDriverTopup />} />
 
+  <Route exact path="/station-ledger" element={<StationLedger />} />
+    
+
 
 
       <Route exact path="/transport-entry" element={<TransportEntry />} />
       <Route exact path="/create-driver" element={<CreateDriver />} />
-      
+      <Route exact path="/assign-driver" element={<AssignDriver />} />
 
 
       </Routes>
