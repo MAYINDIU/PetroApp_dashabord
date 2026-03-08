@@ -15,9 +15,7 @@ import './charts/ChartjsConfig';
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import AddApplication from './pages/Application/AddApplication';
-import ApplicationListadmin from './pages/Application/ApplicationListadmin';
-import MyAssigments from './pages/Application/MyAssigments';
+
 import Registration from './pages/Application/Registration';
 import Alluserlist from './pages/Application/Alluserlist';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -28,6 +26,13 @@ import SingleDriverTopup from './pages/TopUp/SingleDriverTopup';
 import MultipleDriverTopup from './pages/TopUp/MultipleDriverTopup';
 import StationLedger from './pages/Ledger/StationLedger';
 import AssignDriver from './pages/Transport_owner/AssignDriver';
+import SettelementListAdmin from './pages/TopUp/SettelementListAdmin';
+import SettelementStation from './pages/TopUp/SettelementStation';
+import StationUserlist from './pages/StationPanel/StationUserlist';
+import StationGroup from './pages/StationPanel/StationGroup';
+import StationUserlists from './pages/StationPanel/StationUserlist';
+import BranchesList from './pages/StationPanel/BranchesList';
+import Workerslist from './pages/StationPanel/Workerslist';
 
 function App() {
 
@@ -50,7 +55,21 @@ const queryClient = new QueryClient();
     <Route exact path="/single-driver-topup" element={<SingleDriverTopup />} />
     <Route exact path="/multiple-driver-topup" element={<MultipleDriverTopup />} />
 
-  <Route exact path="/station-ledger" element={<StationLedger />} />
+    <Route exact path="/station-ledger" element={<StationLedger />} />
+    <Route exact path="/settlement-list" element={<SettelementListAdmin />} />
+    <Route exact path="/settlement-list-station" element={<SettelementStation />} />
+  
+    
+    {/* //Station Panel */}
+      <Route exact path="/station-userlist" element={<StationUserlists />} />
+      <Route exact path="/station-group-list" element={<StationGroup />} />
+      <Route exact path="/station-branchlist" element={<BranchesList />} />
+      <Route exact path="/workerslist" element={<Workerslist />} />
+      
+      
+
+    {/* //Station Panel */}
+
     
 
 

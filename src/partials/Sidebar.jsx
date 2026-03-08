@@ -2,7 +2,11 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import SidebarLinkGroup from "./SidebarLinkGroup";
 import { AiOutlineContainer } from "react-icons/ai";
-
+import { 
+  Eye, Plus, Search, Loader2, X, Save, 
+  ShieldCheck, Building2, // <--- Add this
+  User2
+} from "lucide-react";
 
 // import { BiSolidUserDetail } from "react-icons/bi";
 import logo from '../images/icon.png';
@@ -25,7 +29,7 @@ function Sidebar({
       
 
     const role=(userDetails?.role);
-    console.log(role);
+    // console.log(role);
 
 
   // close on click outside
@@ -305,7 +309,43 @@ function Sidebar({
                   }}
                 </SidebarLinkGroup>
                    </ul>
+                   
+    <ul className="mt-1">
+                <SidebarLinkGroup activecondition={pathname === "/settlement-list" || pathname.includes("/settlement-list")}>
+                  {(handleClick, open) => {
+                    return (
+                      <React.Fragment>
+                        <Link
+                          to="/settlement-list"
+                          className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 ${
+                            pathname === "/settlement-list" || pathname.includes("dashboard") || pathname.includes("/settlement-list") 
+                              ? "" 
+                              : "hover:text-gray-900 dark:hover:text-white"
+                          }`}
+                          onClick={() => {
+                            handleClick();
+                            setSidebarExpanded(true);
+                          }}
+                        >
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center">
+                              <AiOutlineContainer 
+                                className={`shrink-0 fill-current ${pathname === "/settlement-list" || pathname.includes("dashboard") || pathname.includes("/settlement-list") 
+                                  ? 'text-violet-500' 
+                                  : 'text-gray-400 dark:text-gray-500'}`}
+                              />
+                              <span className="text-sm font-medium ml-4 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                        Settlement List
+                              </span>
+                            </div>
+                          </div>
 
+                        </Link>
+                      </React.Fragment>
+                    );
+                  }}
+                </SidebarLinkGroup>
+                   </ul>
             
              </div>
              )}
@@ -476,6 +516,141 @@ function Sidebar({
              </div>
              )}
 
+
+       {role === "station" && (
+  <div>
+    <ul className="mt-0 space-y-0">
+      {/* Dashboard */}
+      <SidebarLinkGroup activecondition={pathname === "/" || pathname.includes("dashboard")}>
+        {(handleClick, open) => (
+          <React.Fragment>
+            <Link
+              to="/dashboard"
+              className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 p-2 rounded-lg ${
+                pathname === "/" || pathname.includes("/dashboard") ? "bg-violet-50/50 dark:bg-gray-800" : "hover:bg-gray-100 dark:hover:bg-gray-800"
+              }`}
+            >
+              <div className="flex items-center">
+                <svg
+                  className={`shrink-0 fill-current ${pathname === "/" || pathname.includes("dashboard") ? 'text-violet-500' : 'text-gray-400 dark:text-gray-500'}`}
+                  width="24" height="24" viewBox="0 0 24 24"
+                >
+                  <path d="M12 3.09L2 12h3v7h4v-4h6v4h4v-7h3z" />
+                </svg>
+                <span className="text-sm font-medium ml-4 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                  Dashboard
+                </span>
+              </div>
+            </Link>
+          </React.Fragment>
+        )}
+      </SidebarLinkGroup>
+
+      {/* ========== USERS & GROUPS DROPDOWN ========== */}
+      <SidebarLinkGroup
+        activecondition={pathname.includes("/station-userlist") || pathname.includes("/station-group-list")}
+      >
+        {(handleClick, open) => (
+          <React.Fragment>
+            <a
+              href="#"
+              className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 p-2 rounded-lg ${
+                open ? "bg-violet-50 dark:bg-gray-700/50" : "hover:bg-gray-100 dark:hover:bg-gray-800"
+              }`}
+              onClick={(e) => {
+                e.preventDefault();
+                sidebarExpanded ? handleClick() : setSidebarExpanded(true);
+              }}
+            >
+              <div className="flex items-center justify-between">
+                <div className="flex items-center">
+                  <User2
+                    size={16}
+                    className={`shrink-0 ${open || pathname.includes("station-user") || pathname.includes("station-group") ? "text-violet-500" : "text-gray-400"}`}
+                  />
+                  <span className="text-sm font-medium ml-4 lg:opacity-0 lg:sidebar-expanded:opacity-100 duration-200">
+                    Users & Groups
+                  </span>
+                </div>
+                <div className="flex shrink-0 ml-2">
+                  <svg className={`w-3 h-3 shrink-0 fill-current text-gray-400 transition-transform duration-200 ${open && "rotate-180"}`} viewBox="0 0 12 12">
+                    <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z" />
+                  </svg>
+                </div>
+              </div>
+            </a>
+            <div className={`${!open && "hidden"}`}>
+              <ul className="pl-11 mt-1 space-y-1">
+                <li>
+                  <Link
+                    to="/station-userlist"
+                    className={`block text-sm transition duration-150 ${pathname.includes("/station-userlist") ? "text-violet-600 font-semibold" : "text-gray-500 hover:text-gray-800 dark:hover:text-white"}`}
+                  >
+                    Station Users
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/station-group-list"
+                    className={`block text-sm transition duration-150 ${pathname.includes("/station-group-list") ? "text-violet-600 font-semibold" : "text-gray-500 hover:text-gray-800 dark:hover:text-white"}`}
+                  >
+                    Groups
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </React.Fragment>
+        )}
+      </SidebarLinkGroup>
+
+      {/* ========== BRANCHES LINK ========== */}
+      <SidebarLinkGroup activecondition={pathname.includes("/station-branchlist")}>
+        {(handleClick, open) => (
+          <Link
+            to="/station-branchlist"
+            className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 p-2 rounded-lg ${
+              pathname.includes("/station-branchlist") ? "bg-violet-50/50 dark:bg-gray-800" : "hover:bg-gray-100 dark:hover:bg-gray-800"
+            }`}
+          >
+            <div className="flex items-center">
+              <Building2
+                size={16}
+                className={`shrink-0 ${pathname.includes("/station-branchlist") ? 'text-violet-500' : 'text-gray-400 dark:text-gray-500'}`}
+              />
+              <span className="text-sm font-medium ml-4 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                Branches
+              </span>
+            </div>
+          </Link>
+        )}
+      </SidebarLinkGroup>
+           {/* ========== BRANCHES LINK ========== */}
+      <SidebarLinkGroup activecondition={pathname.includes("/workerslist")}>
+        {(handleClick, open) => (
+          <Link
+            to="/workerslist"
+            className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 p-2 rounded-lg ${
+              pathname.includes("/workerslist") ? "bg-violet-50/50 dark:bg-gray-800" : "hover:bg-gray-100 dark:hover:bg-gray-800"
+            }`}
+          >
+            <div className="flex items-center">
+              <Building2
+                size={16}
+                className={`shrink-0 ${pathname.includes("/workerslist") ? 'text-violet-500' : 'text-gray-400 dark:text-gray-500'}`}
+              />
+              <span className="text-sm font-medium ml-4 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                Workers
+              </span>
+            </div>
+          </Link>
+        )}
+      </SidebarLinkGroup>
+
+
+      
+    </ul>
+  </div>
+)}
              
           
 

@@ -30,19 +30,7 @@ const Registration = () => {
 
   const navigate = useNavigate();
 
-  // Fetch stations from API
-  useEffect(() => {
-    const fetchStations = async () => {
-      try {
-        const response = await fetch('https://alhamarahomesbd.com/cashless-fuel-api/public/api/v1/stations');
-        const data = await response.json();
-        if (data.success) setStations(data.data.stations || []);
-      } catch (err) {
-        console.error('Failed to fetch stations', err);
-      }
-    };
-    fetchStations();
-  }, []);
+
 
   const showNotification = (type, message) => {
     setNotification({ message, type });
@@ -55,10 +43,7 @@ const Registration = () => {
       showNotification('error', 'Please fill all fields');
       return;
     }
-    if (role === 'station' && !station) {
-      showNotification('error', 'Please select a station for the Station role.');
-      return;
-    }
+   
     if (password !== passwordConfirmation) {
       showNotification('error', 'Passwords do not match');
       return;
@@ -67,9 +52,7 @@ const Registration = () => {
     setIsSubmitting(true);
 
     const payload = { name, email, phone, password, password_confirmation: passwordConfirmation, role };
-    if (role === 'station') {
-      payload.station_id = station;
-    }
+
 
     try {
       const response = await fetch('https://alhamarahomesbd.com/cashless-fuel-api/public/api/v1/auth/register', {
@@ -132,15 +115,7 @@ const Registration = () => {
               <option value="station">Station</option>
             </select>
 
-            {/* Station Dropdown */}
-            {role === 'station' && (
-              <select value={station} onChange={(e) => setStation(e.target.value)} className="w-full bg-slate-950/50 border border-slate-700 rounded-xl p-3.5 text-white placeholder:text-slate-400">
-                <option value="">Select Station</option>
-                {stations.map((s) => (
-                  <option key={s.id} value={s.id}>{s.name}</option>
-                ))}
-              </select>
-            )}
+          
 
             {/* Password Fields */}
             <div className="relative">
