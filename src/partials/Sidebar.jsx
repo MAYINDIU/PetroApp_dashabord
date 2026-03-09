@@ -3,7 +3,7 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import SidebarLinkGroup from "./SidebarLinkGroup";
 import { AiOutlineContainer } from "react-icons/ai";
 import { 
-  Eye, Plus, Search, Loader2, X, Save, 
+  Users , ClipboardList , Search, Loader2, X, Save, 
   ShieldCheck, Building2, // <--- Add this
   User2
 } from "lucide-react";
@@ -517,8 +517,8 @@ function Sidebar({
              )}
 
 
-       {role === "station" && (
-  <div>
+      {role === "station" && (
+     <div>
     <ul className="mt-0 space-y-0">
       {/* Dashboard */}
       <SidebarLinkGroup activecondition={pathname === "/" || pathname.includes("dashboard")}>
@@ -624,32 +624,75 @@ function Sidebar({
           </Link>
         )}
       </SidebarLinkGroup>
-           {/* ========== BRANCHES LINK ========== */}
-      <SidebarLinkGroup activecondition={pathname.includes("/workerslist")}>
-        {(handleClick, open) => (
-          <Link
-            to="/workerslist"
-            className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 p-2 rounded-lg ${
-              pathname.includes("/workerslist") ? "bg-violet-50/50 dark:bg-gray-800" : "hover:bg-gray-100 dark:hover:bg-gray-800"
-            }`}
-          >
-            <div className="flex items-center">
-              <Building2
-                size={16}
-                className={`shrink-0 ${pathname.includes("/workerslist") ? 'text-violet-500' : 'text-gray-400 dark:text-gray-500'}`}
-              />
-              <span className="text-sm font-medium ml-4 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                Workers
-              </span>
-            </div>
-          </Link>
-        )}
-      </SidebarLinkGroup>
 
+              {/* ========== WORKERS LINK ========== */}
+        <SidebarLinkGroup activecondition={pathname === "/workerslist"}>
+          {(handleClick, open) => (
+            <Link
+              to="/workerslist"
+              className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 p-2 rounded-lg ${
+                pathname === "/workerslist" ? "bg-violet-50/50 dark:bg-gray-800" : "hover:bg-gray-100 dark:hover:bg-gray-800"
+              }`}
+            >
+              <div className="flex items-center">
+                <Users
+                  size={16}
+                  className={`shrink-0 ${pathname === "/workerslist" ? 'text-violet-500' : 'text-gray-400 dark:text-gray-500'}`}
+                />
+                <span className="text-sm font-medium ml-4 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                  Workers
+                </span>
+              </div>
+            </Link>
+          )}
+        </SidebarLinkGroup>
 
-      
-    </ul>
-  </div>
+        {/* ========== WORKERS LOG LINK ========== */}
+        <SidebarLinkGroup activecondition={pathname === "/workerslist-logs"}>
+          {(handleClick, open) => (
+            <Link
+              to="/workerslist-logs"
+              className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 p-2 rounded-lg ${
+                pathname === "/workerslist-logs" ? "bg-violet-50/50 dark:bg-gray-800" : "hover:bg-gray-100 dark:hover:bg-gray-800"
+              }`}
+            >
+              <div className="flex items-center">
+                <ClipboardList
+                  size={16}
+                  className={`shrink-0 ${pathname === "/workerslist-logs" ? 'text-violet-500' : 'text-gray-400 dark:text-gray-500'}`}
+                />
+                <span className="text-sm font-medium ml-4 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                  Workers Logs
+                </span>
+              </div>
+            </Link>
+          )}
+        </SidebarLinkGroup>
+         {/* ========== WORKERS LOG LINK ========== */}
+        <SidebarLinkGroup activecondition={pathname === "/changefuel-price-request"}>
+          {(handleClick, open) => (
+            <Link
+              to="/changefuel-price-request"
+              className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 p-2 rounded-lg ${
+                pathname === "/changefuel-price-request" ? "bg-violet-50/50 dark:bg-gray-800" : "hover:bg-gray-100 dark:hover:bg-gray-800"
+              }`}
+            >
+              <div className="flex items-center">
+                <ClipboardList
+                  size={16}
+                  className={`shrink-0 ${pathname === "/changefuel-price-request" ? 'text-violet-500' : 'text-gray-400 dark:text-gray-500'}`}
+                />
+                <span className="text-sm font-medium ml-1 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                Change Fuel Price Request
+                </span>
+              </div>
+            </Link>
+          )}
+        </SidebarLinkGroup>
+        
+
+      </ul>
+     </div>
 )}
              
           

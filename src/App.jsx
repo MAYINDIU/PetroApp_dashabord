@@ -33,6 +33,8 @@ import StationGroup from './pages/StationPanel/StationGroup';
 import StationUserlists from './pages/StationPanel/StationUserlist';
 import BranchesList from './pages/StationPanel/BranchesList';
 import Workerslist from './pages/StationPanel/Workerslist';
+import WorkersLogList from './pages/StationPanel/WorkersLogList';
+import ChangefuelPriceRequest from './pages/StationPanel/ChangefuelPriceRequest';
 
 function App() {
 
@@ -65,6 +67,11 @@ const queryClient = new QueryClient();
       <Route exact path="/station-group-list" element={<StationGroup />} />
       <Route exact path="/station-branchlist" element={<BranchesList />} />
       <Route exact path="/workerslist" element={<Workerslist />} />
+      <Route exact path="/workerslist-logs" element={<WorkersLogList />} />
+      <Route exact path="/changefuel-price-request" element={<ChangefuelPriceRequest />} />
+
+      
+      
       
       
 
