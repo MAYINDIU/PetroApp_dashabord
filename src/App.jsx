@@ -35,6 +35,10 @@ import BranchesList from './pages/StationPanel/BranchesList';
 import Workerslist from './pages/StationPanel/Workerslist';
 import WorkersLogList from './pages/StationPanel/WorkersLogList';
 import ChangefuelPriceRequest from './pages/StationPanel/ChangefuelPriceRequest';
+import PurchaseOrderLedger from './pages/StationPanel/PurchaseOrderLedger';
+import ElectronicBill from './pages/StationPanel/ElectronicBill';
+import BillvatReport from './pages/StationPanel/BillvatReport';
+import LedgerReport from './pages/StationPanel/LedgerReport';
 
 function App() {
 
@@ -69,7 +73,11 @@ const queryClient = new QueryClient();
       <Route exact path="/workerslist" element={<Workerslist />} />
       <Route exact path="/workerslist-logs" element={<WorkersLogList />} />
       <Route exact path="/changefuel-price-request" element={<ChangefuelPriceRequest />} />
-
+      <Route exact path="/purchase-order-list" element={<PurchaseOrderLedger />} />
+      <Route exact path="/electronic-bill" element={<ElectronicBill />} />
+      <Route exact path="/bill-vat-report" element={<BillvatReport />} />
+      
+      <Route exact path="/ledger-report" element={<LedgerReport />} />
       
       
       

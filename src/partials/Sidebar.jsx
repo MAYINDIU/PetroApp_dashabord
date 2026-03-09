@@ -689,6 +689,95 @@ function Sidebar({
             </Link>
           )}
         </SidebarLinkGroup>
+
+
+        
+
+         <SidebarLinkGroup activecondition={pathname === "/ledger-report"}>
+          {(handleClick, open) => (
+            <Link
+              to="/ledger-report"
+              className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 p-2 rounded-lg ${
+                pathname === "/ledger-report" ? "bg-violet-50/50 dark:bg-gray-800" : "hover:bg-gray-100 dark:hover:bg-gray-800"
+              }`}
+            >
+              <div className="flex items-center">
+                <ClipboardList
+                  size={16}
+                  className={`shrink-0 ${pathname === "/ledger-report" ? 'text-violet-500' : 'text-gray-400 dark:text-gray-500'}`}
+                />
+                <span className="text-sm font-medium ml-5 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+              Ledger
+                </span>
+              </div>
+            </Link>
+          )}
+        </SidebarLinkGroup>
+        
+             <SidebarLinkGroup activecondition={pathname === "/purchase-order-list"}>
+          {(handleClick, open) => (
+            <Link
+              to="/purchase-order-list"
+              className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 p-2 rounded-lg ${
+                pathname === "/purchase-order-list" ? "bg-violet-50/50 dark:bg-gray-800" : "hover:bg-gray-100 dark:hover:bg-gray-800"
+              }`}
+            >
+              <div className="flex items-center">
+                <ClipboardList
+                  size={16}
+                  className={`shrink-0 ${pathname === "/purchase-order-list" ? 'text-violet-500' : 'text-gray-400 dark:text-gray-500'}`}
+                />
+                <span className="text-sm font-medium ml-1 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+              Purchase Order Ledger
+                </span>
+              </div>
+            </Link>
+          )}
+        </SidebarLinkGroup>
+               <SidebarLinkGroup activecondition={pathname === "/electronic-bill"}>
+          {(handleClick, open) => (
+            <Link
+              to="/electronic-bill"
+              className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 p-2 rounded-lg ${
+                pathname === "/electronic-bill" ? "bg-violet-50/50 dark:bg-gray-800" : "hover:bg-gray-100 dark:hover:bg-gray-800"
+              }`}
+            >
+              <div className="flex items-center">
+                <ClipboardList
+                  size={16}
+                  className={`shrink-0 ${pathname === "/electronic-bill" ? 'text-violet-500' : 'text-gray-400 dark:text-gray-500'}`}
+                />
+                <span className="text-sm font-medium ml-1 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+              Electronic Bills
+                </span>
+              </div>
+            </Link>
+          )}
+        </SidebarLinkGroup>
+
+               <SidebarLinkGroup activecondition={pathname === "/bill-vat-report"}>
+          {(handleClick, open) => (
+            <Link
+              to="/bill-vat-report"
+              className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 p-2 rounded-lg ${
+                pathname === "/bill-vat-report" ? "bg-violet-50/50 dark:bg-gray-800" : "hover:bg-gray-100 dark:hover:bg-gray-800"
+              }`}
+            >
+              <div className="flex items-center">
+                <ClipboardList
+                  size={16}
+                  className={`shrink-0 ${pathname === "/bill-vat-report" ? 'text-violet-500' : 'text-gray-400 dark:text-gray-500'}`}
+                />
+                <span className="text-sm font-medium ml-1 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+              Bills Vat Reports
+                </span>
+              </div>
+            </Link>
+          )}
+        </SidebarLinkGroup>
+
+        
+        
         
 
       </ul>

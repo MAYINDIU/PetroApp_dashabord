@@ -32,8 +32,6 @@ const Register = () => {
 
 
 
-
-
 //Out of head office corporate zone
 
 const [cinchargedatedata, setCInchargedataout] = useState([]);

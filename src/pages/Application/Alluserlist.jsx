@@ -109,8 +109,12 @@ const Alluserlist = () => {
         onError: (err) => toast.error(err.message),
     });
 
+
+
     const users = data?.users || [];
     const paginationInfo = data?.pagination || {};
+
+    // console.log(users)
 
     useEffect(() => {
         // Reset to page 1 when search term changes
