@@ -124,7 +124,7 @@ const LedgerReport = () => {
                 <tbody className="divide-y divide-slate-50">
                   {isLoading ? (
                     <tr><td colSpan="6" className="py-20 text-center"><Loader2 className="animate-spin mx-auto text-blue-500" size={32} /></td></tr>
-                  ) : ledgerData?.transactions.map((txn, idx) => (
+                  ) : ledgerData?.transactions?.map((txn, idx) => (
                     <tr key={txn.id} className="hover:bg-slate-50/50 transition-colors group">
                       <td className="px-6 py-4 text-sm font-bold text-slate-700">{idx + 1}</td>
                       <td className="px-6 py-4 text-slate-500 text-xs">{new Date(txn.created_at).toLocaleDateString('en-GB')}</td>
@@ -143,11 +143,12 @@ const LedgerReport = () => {
                             onClick={() => openDetails(txn)}
                             className="w-10 h-10 rounded-lg border border-slate-200 overflow-hidden cursor-pointer hover:border-blue-400 transition-all shadow-sm"
                           >
-                            <img 
-                              src={txn.meter_photo_url} 
-                              alt="Meter" className="w-full h-full object-cover"
-                              onError={(e) => { e.target.src = "https://via.placeholder.com/100?text=No+Img"; }}
-                            />
+                           <img 
+                                    src={`https://alhamarahomesbd.com/cashless-fuel-api/public/storage/${txn?.meta?.meter_photo_path}`} 
+                                    alt="Meter" 
+                                    className="w-full h-full object-cover"
+                                    onError={(e) => { e.target.src = "https://via.placeholder.com/400x225?text=Photo+Not+Found"; }}
+                                    />
                           </div>
                           <button onClick={() => openDetails(txn)} className="p-2 text-slate-300 hover:text-blue-500 hover:bg-blue-50 rounded-lg transition-all">
                             <Eye size={18} />
@@ -196,11 +197,13 @@ const LedgerReport = () => {
                         <p className="text-[9px] font-bold text-slate-400 uppercase px-2 mb-2">Original Meter Photo</p>
                         <div className="rounded-lg overflow-hidden bg-white aspect-video relative group">
                           <img 
-                            src={selectedTxn.meter_photo_url} 
-                            alt="Meter" className="w-full h-full object-cover"
-                          />
+                                    src={`https://alhamarahomesbd.com/cashless-fuel-api/public/storage/${selectedTxn.meta?.meter_photo_path}`} 
+                                    alt="Meter" 
+                                    className="w-full h-full object-cover"
+                                    onError={(e) => { e.target.src = "https://via.placeholder.com/400x225?text=Photo+Not+Found"; }}
+                                    />
                           <a 
-                            href={selectedTxn.meter_photo_url} 
+                            href={  selectedTxn.meter_photo_url} 
                             target="_blank" rel="noreferrer"
                             className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white transition-opacity font-bold gap-2 text-xs"
                           >
