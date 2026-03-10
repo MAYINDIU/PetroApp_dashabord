@@ -39,6 +39,7 @@ import PurchaseOrderLedger from './pages/StationPanel/PurchaseOrderLedger';
 import ElectronicBill from './pages/StationPanel/ElectronicBill';
 import BillvatReport from './pages/StationPanel/BillvatReport';
 import LedgerReport from './pages/StationPanel/LedgerReport';
+import AdminTopup from './pages/TopUp/AdminTopup';
 
 function App() {
 
@@ -78,7 +79,7 @@ const queryClient = new QueryClient();
       <Route exact path="/bill-vat-report" element={<BillvatReport />} />
       
       <Route exact path="/ledger-report" element={<LedgerReport />} />
-      
+      <Route exact path="/topup-for-bus-owner" element={<AdminTopup />} />
       
       
       
