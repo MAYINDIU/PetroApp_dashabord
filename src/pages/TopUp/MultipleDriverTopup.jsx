@@ -9,7 +9,6 @@ import Header from "../../partials/Header";
 
 const MultipleDriverTopup = () => {
   const queryClient = useQueryClient();
-  const [ownerId, setOwnerId] = useState("");
   const [selectedDriverId, setSelectedDriverId] = useState("");
   const [amount, setAmount] = useState("");
   const [isHistoryView, setIsHistoryView] = useState(false);
@@ -20,37 +19,35 @@ const MultipleDriverTopup = () => {
     cash_reference: "RCPT-BULK-001",
   });
 
-  // Fetch Users
-  const { data: users } = useQuery({
-    queryKey: ["usersList"],
+  // Fetch Drivers
+  const { data: driversData } = useQuery({
+    queryKey: ["ownerDrivers"],
     queryFn: async () => {
       const empData = JSON.parse(localStorage.getItem("empData"));
       const res = await fetch(
-        `https://alhamarahomesbd.com/cashless-fuel-api/public/api/v1/admin/users`,
+        `https://alhamarahomesbd.com/cashless-fuel-api/public/api/v1/owner/drivers`,
         {
           headers: { Authorization: `Bearer ${empData?.token}` },
         }
       );
-      return (await res.json()).data.users || [];
+      const result = await res.json();
+      if (!result.success) throw new Error(result.message || "Failed to fetch drivers");
+      return result.data;
     },
   });
 
-  const owners = useMemo(
-    () => users?.filter((u) => u.role === "bus_owner") || [],
-    [users]
-  );
   const drivers = useMemo(
-    () => users?.filter((u) => u.role === "driver") || [],
-    [users]
+    () => driversData?.drivers?.map((d) => d.driver) || [],
+    [driversData]
   );
 
   // Fetch Owner's Driver Topups
   const { data: topupData, isLoading: isLoadingTopups } = useQuery({
-    queryKey: ["ownerTopups", ownerId],
+    queryKey: ["ownerTopups"],
     queryFn: async () => {
       const empData = JSON.parse(localStorage.getItem("empData"));
       const res = await fetch(
-        `https://alhamarahomesbd.com/cashless-fuel-api/public/api/v1/admin/owners/${ownerId}/drivers/topups`,
+        `https://alhamarahomesbd.com/cashless-fuel-api/public/api/v1/owner/topups`,
         {
           headers: { Authorization: `Bearer ${empData?.token}` },
         }
@@ -59,7 +56,7 @@ const MultipleDriverTopup = () => {
       if (!result.success) throw new Error(result.message || "Failed to fetch topups");
       return result.data;
     },
-    enabled: !!ownerId,
+    enabled: isHistoryView,
   });
 
   const totalAmount = selectedDrivers.reduce(
@@ -89,7 +86,7 @@ const MultipleDriverTopup = () => {
     mutationFn: async (payload) => {
       const empData = JSON.parse(localStorage.getItem("empData"));
       const response = await fetch(
-        `https://alhamarahomesbd.com/cashless-fuel-api/public/api/v1/admin/owners/${ownerId}/drivers/bulk-topup`,
+        `https://alhamarahomesbd.com/cashless-fuel-api/public/api/v1/owner/drivers/bulk-topup`,
         {
           method: "POST",
           headers: {
@@ -106,8 +103,7 @@ const MultipleDriverTopup = () => {
     onSuccess: () => {
       Swal.fire("Success", "Bulk transaction successful!", "success");
       setSelectedDrivers([]);
-      queryClient.invalidateQueries(["usersList"]);
-      queryClient.invalidateQueries(["ownerTopups", ownerId]);
+      queryClient.invalidateQueries(["ownerTopups"]);
     },
     onError: (error) => {
       const errorMessage = error?.errors
@@ -193,19 +189,7 @@ const MultipleDriverTopup = () => {
               </div>
 
               <div className="p-6 space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <select
-                    onChange={(e) => setOwnerId(e.target.value)}
-                    value={ownerId}
-                    className="w-full p-2.5 rounded-xl border dark:bg-slate-700 dark:border-slate-600 focus:ring-2 focus:ring-indigo-500"
-                  >
-                    <option value="">Select Bus Owner</option>
-                    {owners.map((o) => (
-                      <option key={o.id} value={o.id}>
-                        {o.name}
-                      </option>
-                    ))}
-                  </select>
+                <div className="grid grid-cols-1 gap-4">
                   {!isHistoryView && (
                     <select
                       value={selectedDriverId}
@@ -291,7 +275,7 @@ const MultipleDriverTopup = () => {
                         })
                       }
                       className="w-full bg-slate-900 text-white py-3 rounded-xl font-semibold hover:bg-slate-800 transition disabled:opacity-50"
-                      disabled={selectedDrivers.length === 0 || !ownerId}
+                      disabled={selectedDrivers.length === 0}
                     >
                       Process Bulk Distribution
                     </button>
@@ -306,11 +290,7 @@ const MultipleDriverTopup = () => {
                       className="mb-4 p-2.5 w-full rounded-xl border dark:bg-slate-700 dark:border-slate-600"
                     />
                     <div className="border rounded-xl overflow-hidden">
-                      {!ownerId ? (
-                        <div className="p-8 text-center text-slate-500 dark:text-slate-400">
-                          Please select a bus owner to view history.
-                        </div>
-                      ) : isLoadingTopups ? (
+                      {isLoadingTopups ? (
                         <div className="p-8 text-center text-slate-500 dark:text-slate-400">
                           Loading transactions...
                         </div>

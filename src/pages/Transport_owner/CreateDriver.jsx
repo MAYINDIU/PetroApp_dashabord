@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from "react";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 
@@ -151,6 +151,73 @@ const CreateDriver = () => {
         });
     };
 
+    const SkeletonLoader = () => (
+        <div className="animate-pulse">
+            {/* Header skeleton */}
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+                <div>
+                    <div className="h-8 bg-slate-200 dark:bg-slate-700 rounded w-64 mb-2"></div>
+                    <div className="h-4 bg-slate-200 dark:bg-slate-700 rounded w-96"></div>
+                </div>
+                <div className="h-12 bg-slate-200 dark:bg-slate-700 rounded-xl w-44"></div>
+            </div>
+
+            {/* Search skeleton */}
+            <div className="mb-6 h-11 bg-slate-200 dark:bg-slate-700 rounded-xl w-full max-w-md"></div>
+
+            {/* Table skeleton */}
+            <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+                <div className="overflow-x-auto">
+                    <table className="w-full text-left border-collapse">
+                        <thead>
+                            <tr className="bg-slate-100 dark:bg-slate-700/50">
+                                <th className="px-6 py-5"><div className="h-4 w-24 bg-slate-200 dark:bg-slate-600 rounded"></div></th>
+                                <th className="px-6 py-5"><div className="h-4 w-32 bg-slate-200 dark:bg-slate-600 rounded"></div></th>
+                                <th className="px-6 py-5"><div className="h-4 w-20 bg-slate-200 dark:bg-slate-600 rounded"></div></th>
+                                <th className="px-6 py-5"><div className="h-4 w-28 bg-slate-200 dark:bg-slate-600 rounded"></div></th>
+                                <th className="px-6 py-5"><div className="h-4 w-16 bg-slate-200 dark:bg-slate-600 rounded"></div></th>
+                                <th className="px-6 py-5 text-center"><div className="h-4 w-16 bg-slate-200 dark:bg-slate-600 rounded mx-auto"></div></th>
+                            </tr>
+                        </thead>
+                        <tbody className="divide-y divide-slate-100 dark:divide-slate-700">
+                            {[...Array(5)].map((_, i) => (
+                                <tr key={i}>
+                                    <td className="px-6 py-4">
+                                        <div className="flex items-center gap-3">
+                                            <div className="h-10 w-10 rounded-full bg-slate-200 dark:bg-slate-700"></div>
+                                            <div>
+                                                <div className="h-4 bg-slate-200 dark:bg-slate-700 rounded w-32 mb-1.5"></div>
+                                                <div className="h-3 bg-slate-200 dark:bg-slate-700 rounded w-20"></div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        <div className="space-y-1.5">
+                                            <div className="h-4 bg-slate-200 dark:bg-slate-700 rounded w-40"></div>
+                                            <div className="h-3 bg-slate-200 dark:bg-slate-700 rounded w-24"></div>
+                                        </div>
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        <div className="h-4 bg-slate-200 dark:bg-slate-700 rounded w-28"></div>
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        <div className="h-4 bg-slate-200 dark:bg-slate-700 rounded w-48"></div>
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        <div className="h-6 w-20 rounded-full bg-slate-200 dark:bg-slate-700"></div>
+                                    </td>
+                                    <td className="px-6 py-4 text-center">
+                                        <div className="h-8 w-8 rounded-lg bg-slate-200 dark:bg-slate-700 mx-auto"></div>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    );
+
     return (
         <div className="flex h-screen bg-slate-50 overflow-hidden font-sans">
             <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
@@ -158,7 +225,11 @@ const CreateDriver = () => {
                 <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
                 
                 <main className="p-6 lg:p-10">
-                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+                    {driversLoading ? (
+                        <SkeletonLoader />
+                    ) : (
+                        <>
+                        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
                         <div>
                             <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">Driver Directory</h1>
                             <p className="text-slate-500 mt-1">Manage driver assignments and authentication.</p>
@@ -169,7 +240,7 @@ const CreateDriver = () => {
                         </button>
                     </div>
 
-                    <div className="mb-6 relative max-w-md">
+                        <div className="mb-6 relative max-w-md">
                         <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400">
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" strokeWidth="2" /></svg>
                         </span>
@@ -177,7 +248,7 @@ const CreateDriver = () => {
                     </div>
 
                     <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
-                        <div className="overflow-x-auto">
+                            <div className="overflow-x-auto">
                             <table className="w-full text-left border-collapse">
                                 <thead>
                                     <tr className="bg-slate-800 text-slate-200 uppercase text-[11px] tracking-widest font-bold">
@@ -190,9 +261,7 @@ const CreateDriver = () => {
                                     </tr>
                                 </thead>
                                 <tbody className="divide-y divide-slate-100">
-                                    {driversLoading ? (
-                                        <tr><td colSpan="4" className="p-20 text-center animate-pulse">Fetching records...</td></tr>
-                                    ) : filteredDrivers?.map((item) => (
+                                    {filteredDrivers?.map((item) => (
                                         <tr key={item.id} className="hover:bg-indigo-50/40 transition-colors group">
                                             <td className="px-6 py-4">
                                                 <div className="flex items-center gap-3">
@@ -247,9 +316,10 @@ const CreateDriver = () => {
                                 </tbody>
                             </table>
                         </div>
-                    </div>
+                        </div>
+                        </>
+                    )}
                 </main>
-                <ToastContainer />
             </div>
         </div>
     );

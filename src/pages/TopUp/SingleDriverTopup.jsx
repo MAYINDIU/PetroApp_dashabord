@@ -26,7 +26,7 @@ const SingleDriverTopup = () => {
     queryFn: async () => {
       const empData = JSON.parse(localStorage.getItem("empData"));
       const res = await fetch(
-        `https://alhamarahomesbd.com/cashless-fuel-api/public/api/v1/admin/users`,
+        `https://alhamarahomesbd.com/cashless-fuel-api/public/api/v1/owner/drivers`,
         {
           headers: {
             Authorization: `Bearer ${empData?.token}`,
@@ -39,7 +39,7 @@ const SingleDriverTopup = () => {
     },
     select: (data) => ({
       ...data,
-      users: data?.users?.filter((u) => u.role === "driver") || [],
+      users: data?.drivers?.map((d) => d.driver) || [],
     }),
   });
 
@@ -49,7 +49,7 @@ const SingleDriverTopup = () => {
     queryFn: async () => {
       const empData = JSON.parse(localStorage.getItem("empData"));
       const res = await fetch(
-        `https://alhamarahomesbd.com/cashless-fuel-api/public/api/v1/admin/topups`,
+        `https://alhamarahomesbd.com/cashless-fuel-api/public/api/v1/owner/topups`,
         {
           headers: {
             Authorization: `Bearer ${empData?.token}`,
@@ -67,7 +67,7 @@ const SingleDriverTopup = () => {
     mutationFn: async (payload) => {
       const empData = JSON.parse(localStorage.getItem("empData"));
       const res = await fetch(
-        `https://alhamarahomesbd.com/cashless-fuel-api/public/api/v1/admin/drivers/${payload.driver_id}/topup`,
+        `https://alhamarahomesbd.com/cashless-fuel-api/public/api/v1/owner/drivers/${payload.driver_id}/topup`,
         {
           method: "POST",
           headers: {
@@ -109,10 +109,13 @@ const SingleDriverTopup = () => {
       if (driver) setSearchTerm(driver.phone);
     },
     onError: (error) => {
+      const errorMessage = error?.errors
+        ? Object.values(error.errors).flat().join(" ")
+        : error?.message || "Something went wrong!";
       Swal.fire({
         icon: "error",
         title: "Top-up Failed",
-        text: error?.message || "Something went wrong!",
+        text: errorMessage,
         confirmButtonColor: "#2563eb",
       });
     },

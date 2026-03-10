@@ -199,79 +199,7 @@ function Sidebar({
                 </SidebarLinkGroup>
                    </ul>
 
-            <ul className="mt-1">
-                <SidebarLinkGroup activecondition={pathname === "/single-driver-topup" || pathname.includes("/single-driver-topup")}>
-                  {(handleClick, open) => {
-                    return (
-                      <React.Fragment>
-                        <Link
-                          to="/single-driver-topup"
-                          className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 ${
-                            pathname === "/single-driver-topup" || pathname.includes("dashboard") || pathname.includes("/single-driver-topup") 
-                              ? "" 
-                              : "hover:text-gray-900 dark:hover:text-white"
-                          }`}
-                          onClick={() => {
-                            handleClick();
-                            setSidebarExpanded(true);
-                          }}
-                        >
-                          <div className="flex items-center justify-between">
-                            <div className="flex items-center">
-                              <AiOutlineContainer 
-                                className={`shrink-0 fill-current ${pathname === "/single-driver-topup" || pathname.includes("dashboard") || pathname.includes("/single-driver-topup") 
-                                  ? 'text-violet-500' 
-                                  : 'text-gray-400 dark:text-gray-500'}`}
-                              />
-                              <span className="text-sm font-medium ml-4 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                         Single Driver Topup
-                              </span>
-                            </div>
-                          </div>
-
-                        </Link>
-                      </React.Fragment>
-                    );
-                  }}
-                </SidebarLinkGroup>
-                   </ul>
-                   
-                      <ul className="mt-1">
-                <SidebarLinkGroup activecondition={pathname === "/multiple-driver-topup" || pathname.includes("/multiple-driver-topup")}>
-                  {(handleClick, open) => {
-                    return (
-                      <React.Fragment>
-                        <Link
-                          to="/multiple-driver-topup"
-                          className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 ${
-                            pathname === "/multiple-driver-topup" || pathname.includes("dashboard") || pathname.includes("/multiple-driver-topup") 
-                              ? "" 
-                              : "hover:text-gray-900 dark:hover:text-white"
-                          }`}
-                          onClick={() => {
-                            handleClick();
-                            setSidebarExpanded(true);
-                          }}
-                        >
-                          <div className="flex items-center justify-between">
-                            <div className="flex items-center">
-                              <AiOutlineContainer 
-                                className={`shrink-0 fill-current ${pathname === "/multiple-driver-topup" || pathname.includes("dashboard") || pathname.includes("/multiple-driver-topup") 
-                                  ? 'text-violet-500' 
-                                  : 'text-gray-400 dark:text-gray-500'}`}
-                              />
-                              <span className="text-sm font-medium ml-4 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                         Multiple Driver Topup
-                              </span>
-                            </div>
-                          </div>
-
-                        </Link>
-                      </React.Fragment>
-                    );
-                  }}
-                </SidebarLinkGroup>
-                   </ul>
+         
                    
                     <ul className="mt-1">
                 <SidebarLinkGroup activecondition={pathname === "/station-ledger" || pathname.includes("/station-ledger")}>
@@ -508,6 +436,79 @@ function Sidebar({
                   }}
                 </SidebarLinkGroup>
                    </ul>
+                      <ul className="mt-1">
+                <SidebarLinkGroup activecondition={pathname === "/single-driver-topup" || pathname.includes("/single-driver-topup")}>
+                  {(handleClick, open) => {
+                    return (
+                      <React.Fragment>
+                        <Link
+                          to="/single-driver-topup"
+                          className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 ${
+                            pathname === "/single-driver-topup" || pathname.includes("dashboard") || pathname.includes("/single-driver-topup") 
+                              ? "" 
+                              : "hover:text-gray-900 dark:hover:text-white"
+                          }`}
+                          onClick={() => {
+                            handleClick();
+                            setSidebarExpanded(true);
+                          }}
+                        >
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center">
+                              <AiOutlineContainer 
+                                className={`shrink-0 fill-current ${pathname === "/single-driver-topup" || pathname.includes("dashboard") || pathname.includes("/single-driver-topup") 
+                                  ? 'text-violet-500' 
+                                  : 'text-gray-400 dark:text-gray-500'}`}
+                              />
+                              <span className="text-sm font-medium ml-4 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                         Single Driver Topup
+                              </span>
+                            </div>
+                          </div>
+
+                        </Link>
+                      </React.Fragment>
+                    );
+                  }}
+                </SidebarLinkGroup>
+                   </ul>
+                   
+                      <ul className="mt-1">
+                <SidebarLinkGroup activecondition={pathname === "/multiple-driver-topup" || pathname.includes("/multiple-driver-topup")}>
+                  {(handleClick, open) => {
+                    return (
+                      <React.Fragment>
+                        <Link
+                          to="/multiple-driver-topup"
+                          className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 ${
+                            pathname === "/multiple-driver-topup" || pathname.includes("dashboard") || pathname.includes("/multiple-driver-topup") 
+                              ? "" 
+                              : "hover:text-gray-900 dark:hover:text-white"
+                          }`}
+                          onClick={() => {
+                            handleClick();
+                            setSidebarExpanded(true);
+                          }}
+                        >
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center">
+                              <AiOutlineContainer 
+                                className={`shrink-0 fill-current ${pathname === "/multiple-driver-topup" || pathname.includes("dashboard") || pathname.includes("/multiple-driver-topup") 
+                                  ? 'text-violet-500' 
+                                  : 'text-gray-400 dark:text-gray-500'}`}
+                              />
+                              <span className="text-sm font-medium ml-4 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                         Multiple Driver Topup
+                              </span>
+                            </div>
+                          </div>
+
+                        </Link>
+                      </React.Fragment>
+                    );
+                  }}
+                </SidebarLinkGroup>
+                   </ul>
 
 
                    
@@ -517,273 +518,114 @@ function Sidebar({
              )}
 
 
-      {role === "station" && (
-     <div>
-    <ul className="mt-0 space-y-0">
-      {/* Dashboard */}
-      <SidebarLinkGroup activecondition={pathname === "/" || pathname.includes("dashboard")}>
-        {(handleClick, open) => (
-          <React.Fragment>
-            <Link
-              to="/dashboard"
-              className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 p-2 rounded-lg ${
-                pathname === "/" || pathname.includes("/dashboard") ? "bg-violet-50/50 dark:bg-gray-800" : "hover:bg-gray-100 dark:hover:bg-gray-800"
-              }`}
-            >
-              <div className="flex items-center">
-                <svg
-                  className={`shrink-0 fill-current ${pathname === "/" || pathname.includes("dashboard") ? 'text-violet-500' : 'text-gray-400 dark:text-gray-500'}`}
-                  width="24" height="24" viewBox="0 0 24 24"
-                >
-                  <path d="M12 3.09L2 12h3v7h4v-4h6v4h4v-7h3z" />
-                </svg>
-                <span className="text-sm font-medium ml-4 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                  Dashboard
-                </span>
+              {role === "station" && (
+              <div className="px-0"> {/* Added slight horizontal padding to the container */}
+                <ul className="mt-0 space-y-0"> {/* Reduced vertical gap between items */}
+                  
+                  {/* Dashboard */}
+                  <SidebarLinkGroup activecondition={pathname === "/" || pathname.includes("dashboard")}>
+                    {(handleClick, open) => (
+                      <Link
+                        to="/dashboard"
+                        className={`flex items-center text-gray-700 dark:text-gray-200 truncate transition duration-150 py-1.5 rounded-md ${
+                          pathname === "/" || pathname.includes("/dashboard") 
+                            ? "bg-violet-50 dark:bg-violet-500/10 border-l-4 border-violet-500" 
+                            : "hover:bg-gray-100 dark:hover:bg-gray-800 border-l-4 border-transparent"
+                        }`}
+                      >
+                        <div className="flex items-center">
+                          <svg
+                            className={`shrink-0 fill-current ${pathname === "/" || pathname.includes("dashboard") ? 'text-violet-500' : 'text-gray-400'}`}
+                            width="18" height="18" viewBox="0 0 24 24"
+                          >
+                            <path d="M12 3.09L2 12h3v7h4v-4h6v4h4v-7h3z" />
+                          </svg>
+                          <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                            Dashboard
+                          </span>
+                        </div>
+                      </Link>
+                    )}
+                  </SidebarLinkGroup>
+
+                  {/* ========== USERS & GROUPS DROPDOWN ========== */}
+                  <SidebarLinkGroup activecondition={pathname.includes("/station-userlist") || pathname.includes("/station-group-list")}>
+                    {(handleClick, open) => (
+                      <React.Fragment>
+                        <a
+                          href="#"
+                          className={`block text-gray-700 dark:text-gray-200 truncate transition duration-150 p-1.5 rounded-md ${
+                            open ? "bg-gray-50 dark:bg-gray-800" : "hover:bg-gray-100 dark:hover:bg-gray-800"
+                          }`}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            sidebarExpanded ? handleClick() : setSidebarExpanded(true);
+                          }}
+                        >
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center">
+                              <User2 size={18} className={`shrink-0 ${open || pathname.includes("station") ? "text-violet-500" : "text-gray-400"}`} />
+                              <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 duration-200">
+                                Users & Groups
+                              </span>
+                            </div>
+                            <svg className={`w-3 h-3 shrink-0 fill-current text-gray-400 transition-transform duration-200 ${open && "rotate-180"}`} viewBox="0 0 12 12">
+                              <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z" />
+                            </svg>
+                          </div>
+                        </a>
+                        <div className={`${!open && "hidden"}`}>
+                          <ul className="pl-8 mt-0.5 space-y-0.5 border-l border-gray-200 dark:border-gray-700 ml-4">
+                            <li>
+                              <Link to="/station-userlist" className={`block py-1 px-2 text-xs transition duration-150 ${pathname.includes("/station-userlist") ? "text-violet-600 font-bold" : "text-gray-500 hover:text-gray-800"}`}>
+                                Station Users
+                              </Link>
+                            </li>
+                            <li>
+                              <Link to="/station-group-list" className={`block py-1 px-2 text-xs transition duration-150 ${pathname.includes("/station-group-list") ? "text-violet-600 font-bold" : "text-gray-500 hover:text-gray-800"}`}>
+                                Groups
+                              </Link>
+                            </li>
+                          </ul>
+                        </div>
+                      </React.Fragment>
+                    )}
+                  </SidebarLinkGroup>
+
+                  {/* ========== COMPACT LINKS HELPERS ========== */}
+                  {[
+                    { to: "/station-branchlist", label: "Branches", icon: Building2 },
+                    { to: "/workerslist", label: "Workers", icon: Users },
+                    { to: "/workerslist-logs", label: "Workers Logs", icon: ClipboardList },
+                    { to: "/changefuel-price-request", label: "Fuel Price Request", icon: ClipboardList },
+                    { to: "/ledger-report", label: "Ledger", icon: ClipboardList },
+                    { to: "/purchase-order-list", label: "P.O Ledger", icon: ClipboardList },
+                    { to: "/electronic-bill", label: "Electronic Bills", icon: ClipboardList },
+                    { to: "/bill-vat-report", label: "VAT Reports", icon: ClipboardList },
+                  ].map((item) => (
+                    <SidebarLinkGroup key={item.to} activecondition={pathname === item.to}>
+                      {() => (
+                        <Link
+                          to={item.to}
+                          className={`flex items-center text-gray-700 dark:text-gray-200 truncate transition duration-150 p-1.5 rounded-md ${
+                            pathname === item.to 
+                              ? "bg-violet-50 dark:bg-violet-500/10 border-l-4 border-violet-500" 
+                              : "hover:bg-gray-100 dark:hover:bg-gray-800 border-l-4 border-transparent"
+                          }`}
+                        >
+                          <item.icon size={18} className={`shrink-0 ${pathname === item.to ? 'text-violet-500' : 'text-gray-400'}`} />
+                          <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                            {item.label}
+                          </span>
+                        </Link>
+                      )}
+                    </SidebarLinkGroup>
+                  ))}
+
+                </ul>
               </div>
-            </Link>
-          </React.Fragment>
-        )}
-      </SidebarLinkGroup>
-
-      {/* ========== USERS & GROUPS DROPDOWN ========== */}
-      <SidebarLinkGroup
-        activecondition={pathname.includes("/station-userlist") || pathname.includes("/station-group-list")}
-      >
-        {(handleClick, open) => (
-          <React.Fragment>
-            <a
-              href="#"
-              className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 p-2 rounded-lg ${
-                open ? "bg-violet-50 dark:bg-gray-700/50" : "hover:bg-gray-100 dark:hover:bg-gray-800"
-              }`}
-              onClick={(e) => {
-                e.preventDefault();
-                sidebarExpanded ? handleClick() : setSidebarExpanded(true);
-              }}
-            >
-              <div className="flex items-center justify-between">
-                <div className="flex items-center">
-                  <User2
-                    size={16}
-                    className={`shrink-0 ${open || pathname.includes("station-user") || pathname.includes("station-group") ? "text-violet-500" : "text-gray-400"}`}
-                  />
-                  <span className="text-sm font-medium ml-4 lg:opacity-0 lg:sidebar-expanded:opacity-100 duration-200">
-                    Users & Groups
-                  </span>
-                </div>
-                <div className="flex shrink-0 ml-2">
-                  <svg className={`w-3 h-3 shrink-0 fill-current text-gray-400 transition-transform duration-200 ${open && "rotate-180"}`} viewBox="0 0 12 12">
-                    <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z" />
-                  </svg>
-                </div>
-              </div>
-            </a>
-            <div className={`${!open && "hidden"}`}>
-              <ul className="pl-11 mt-1 space-y-1">
-                <li>
-                  <Link
-                    to="/station-userlist"
-                    className={`block text-sm transition duration-150 ${pathname.includes("/station-userlist") ? "text-violet-600 font-semibold" : "text-gray-500 hover:text-gray-800 dark:hover:text-white"}`}
-                  >
-                    Station Users
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/station-group-list"
-                    className={`block text-sm transition duration-150 ${pathname.includes("/station-group-list") ? "text-violet-600 font-semibold" : "text-gray-500 hover:text-gray-800 dark:hover:text-white"}`}
-                  >
-                    Groups
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </React.Fragment>
-        )}
-      </SidebarLinkGroup>
-
-      {/* ========== BRANCHES LINK ========== */}
-      <SidebarLinkGroup activecondition={pathname.includes("/station-branchlist")}>
-        {(handleClick, open) => (
-          <Link
-            to="/station-branchlist"
-            className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 p-2 rounded-lg ${
-              pathname.includes("/station-branchlist") ? "bg-violet-50/50 dark:bg-gray-800" : "hover:bg-gray-100 dark:hover:bg-gray-800"
-            }`}
-          >
-            <div className="flex items-center">
-              <Building2
-                size={16}
-                className={`shrink-0 ${pathname.includes("/station-branchlist") ? 'text-violet-500' : 'text-gray-400 dark:text-gray-500'}`}
-              />
-              <span className="text-sm font-medium ml-4 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                Branches
-              </span>
-            </div>
-          </Link>
-        )}
-      </SidebarLinkGroup>
-
-              {/* ========== WORKERS LINK ========== */}
-        <SidebarLinkGroup activecondition={pathname === "/workerslist"}>
-          {(handleClick, open) => (
-            <Link
-              to="/workerslist"
-              className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 p-2 rounded-lg ${
-                pathname === "/workerslist" ? "bg-violet-50/50 dark:bg-gray-800" : "hover:bg-gray-100 dark:hover:bg-gray-800"
-              }`}
-            >
-              <div className="flex items-center">
-                <Users
-                  size={16}
-                  className={`shrink-0 ${pathname === "/workerslist" ? 'text-violet-500' : 'text-gray-400 dark:text-gray-500'}`}
-                />
-                <span className="text-sm font-medium ml-4 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                  Workers
-                </span>
-              </div>
-            </Link>
-          )}
-        </SidebarLinkGroup>
-
-        {/* ========== WORKERS LOG LINK ========== */}
-        <SidebarLinkGroup activecondition={pathname === "/workerslist-logs"}>
-          {(handleClick, open) => (
-            <Link
-              to="/workerslist-logs"
-              className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 p-2 rounded-lg ${
-                pathname === "/workerslist-logs" ? "bg-violet-50/50 dark:bg-gray-800" : "hover:bg-gray-100 dark:hover:bg-gray-800"
-              }`}
-            >
-              <div className="flex items-center">
-                <ClipboardList
-                  size={16}
-                  className={`shrink-0 ${pathname === "/workerslist-logs" ? 'text-violet-500' : 'text-gray-400 dark:text-gray-500'}`}
-                />
-                <span className="text-sm font-medium ml-4 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                  Workers Logs
-                </span>
-              </div>
-            </Link>
-          )}
-        </SidebarLinkGroup>
-         {/* ========== WORKERS LOG LINK ========== */}
-        <SidebarLinkGroup activecondition={pathname === "/changefuel-price-request"}>
-          {(handleClick, open) => (
-            <Link
-              to="/changefuel-price-request"
-              className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 p-2 rounded-lg ${
-                pathname === "/changefuel-price-request" ? "bg-violet-50/50 dark:bg-gray-800" : "hover:bg-gray-100 dark:hover:bg-gray-800"
-              }`}
-            >
-              <div className="flex items-center">
-                <ClipboardList
-                  size={16}
-                  className={`shrink-0 ${pathname === "/changefuel-price-request" ? 'text-violet-500' : 'text-gray-400 dark:text-gray-500'}`}
-                />
-                <span className="text-sm font-medium ml-1 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-                Change Fuel Price Request
-                </span>
-              </div>
-            </Link>
-          )}
-        </SidebarLinkGroup>
-
-
-        
-
-         <SidebarLinkGroup activecondition={pathname === "/ledger-report"}>
-          {(handleClick, open) => (
-            <Link
-              to="/ledger-report"
-              className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 p-2 rounded-lg ${
-                pathname === "/ledger-report" ? "bg-violet-50/50 dark:bg-gray-800" : "hover:bg-gray-100 dark:hover:bg-gray-800"
-              }`}
-            >
-              <div className="flex items-center">
-                <ClipboardList
-                  size={16}
-                  className={`shrink-0 ${pathname === "/ledger-report" ? 'text-violet-500' : 'text-gray-400 dark:text-gray-500'}`}
-                />
-                <span className="text-sm font-medium ml-5 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-              Ledger
-                </span>
-              </div>
-            </Link>
-          )}
-        </SidebarLinkGroup>
-        
-             <SidebarLinkGroup activecondition={pathname === "/purchase-order-list"}>
-          {(handleClick, open) => (
-            <Link
-              to="/purchase-order-list"
-              className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 p-2 rounded-lg ${
-                pathname === "/purchase-order-list" ? "bg-violet-50/50 dark:bg-gray-800" : "hover:bg-gray-100 dark:hover:bg-gray-800"
-              }`}
-            >
-              <div className="flex items-center">
-                <ClipboardList
-                  size={16}
-                  className={`shrink-0 ${pathname === "/purchase-order-list" ? 'text-violet-500' : 'text-gray-400 dark:text-gray-500'}`}
-                />
-                <span className="text-sm font-medium ml-1 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-              Purchase Order Ledger
-                </span>
-              </div>
-            </Link>
-          )}
-        </SidebarLinkGroup>
-               <SidebarLinkGroup activecondition={pathname === "/electronic-bill"}>
-          {(handleClick, open) => (
-            <Link
-              to="/electronic-bill"
-              className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 p-2 rounded-lg ${
-                pathname === "/electronic-bill" ? "bg-violet-50/50 dark:bg-gray-800" : "hover:bg-gray-100 dark:hover:bg-gray-800"
-              }`}
-            >
-              <div className="flex items-center">
-                <ClipboardList
-                  size={16}
-                  className={`shrink-0 ${pathname === "/electronic-bill" ? 'text-violet-500' : 'text-gray-400 dark:text-gray-500'}`}
-                />
-                <span className="text-sm font-medium ml-1 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-              Electronic Bills
-                </span>
-              </div>
-            </Link>
-          )}
-        </SidebarLinkGroup>
-
-               <SidebarLinkGroup activecondition={pathname === "/bill-vat-report"}>
-          {(handleClick, open) => (
-            <Link
-              to="/bill-vat-report"
-              className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 p-2 rounded-lg ${
-                pathname === "/bill-vat-report" ? "bg-violet-50/50 dark:bg-gray-800" : "hover:bg-gray-100 dark:hover:bg-gray-800"
-              }`}
-            >
-              <div className="flex items-center">
-                <ClipboardList
-                  size={16}
-                  className={`shrink-0 ${pathname === "/bill-vat-report" ? 'text-violet-500' : 'text-gray-400 dark:text-gray-500'}`}
-                />
-                <span className="text-sm font-medium ml-1 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
-              Bills Vat Reports
-                </span>
-              </div>
-            </Link>
-          )}
-        </SidebarLinkGroup>
-
-        
-        
-        
-
-      </ul>
-     </div>
-)}
-             
+            )}
+                        
           
 
 
