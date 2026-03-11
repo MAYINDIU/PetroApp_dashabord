@@ -302,7 +302,7 @@ const SingleDriverTopup = () => {
                         key={tx.tx_id}
                         className="border-t dark:border-slate-700 hover:bg-blue-50 dark:hover:bg-slate-700"
                       >
-                        <td className="px-6 py-4">{tx.date_time}</td>
+                        <td className="px-6 py-4">{new Date(tx.date_time).toLocaleDateString('en-CA')}</td>
                         <td className="px-6 py-4">
                           {tx.driver_name}
                           <div className="text-xs opacity-60">{tx.driver_phone}</div>

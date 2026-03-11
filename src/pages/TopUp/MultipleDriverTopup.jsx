@@ -308,7 +308,7 @@ const MultipleDriverTopup = () => {
                           <tbody>
                             {filteredTopups.map((tx) => (
                               <tr key={tx.tx_id} className="border-t dark:border-slate-700 hover:bg-blue-50 dark:hover:bg-slate-700">
-                                <td className="p-3 text-slate-700 dark:text-slate-200">{new Date(tx.date_time).toLocaleString()}</td>
+                                <td className="p-3 text-slate-700 dark:text-slate-200">{new Date(tx.date_time).toLocaleDateString('en-CA')}</td>
                                 <td className="p-3 font-medium text-slate-700 dark:text-slate-200">{tx.driver_name}</td>
                                 <td className="p-3 text-slate-600 dark:text-slate-400 font-mono">{tx.cash_reference}</td>
                                 <td className="p-3 text-right tabular-nums text-blue-600 dark:text-blue-400">{tx.amount}</td>

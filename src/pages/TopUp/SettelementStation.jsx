@@ -135,12 +135,12 @@ const SettelementStation = () => {
             <h4 class="text-xs font-bold text-slate-500 uppercase mb-3 tracking-wider">Period</h4>
             <div class="flex justify-between mb-1">
               <span class="text-slate-600 text-sm">Start Date:</span>
-              <span class="font-medium text-slate-800 text-sm">${new Date(item.period_start).toLocaleDateString()}</span>
+              <span class="font-medium text-slate-800 text-sm">${new Date(item.period_start).toLocaleDateString('en-CA')}</span>
             </div>
             ${item.period_end ? `
             <div class="flex justify-between">
               <span class="text-slate-600 text-sm">End Date:</span>
-              <span class="font-medium text-slate-800 text-sm">${new Date(item.period_end).toLocaleDateString()}</span>
+              <span class="font-medium text-slate-800 text-sm">${new Date(item.period_end).toLocaleDateString('en-CA')}</span>
             </div>` : ''}
           </div>
         </div>
@@ -161,7 +161,7 @@ const SettelementStation = () => {
       // Station users don't search by station name/phone, just amount or maybe date
       result = result.filter(item => 
         String(item.requested_amount).includes(lowerTerm) ||
-        new Date(item.period_start).toLocaleDateString().includes(lowerTerm)
+        new Date(item.period_start).toLocaleDateString('en-CA').includes(lowerTerm)
       );
     }
     return result;
@@ -275,13 +275,13 @@ const SettelementStation = () => {
                       <tr key={item.id} className="hover:bg-slate-50 dark:hover:bg-slate-700/30 transition-colors duration-150">
                         <td className="px-6 py-4">
                           <div className="text-sm text-slate-800 dark:text-white">
-                            {new Date(item.created_at).toLocaleDateString()}
+                            {new Date(item.created_at).toLocaleDateString('en-CA')}
                           </div>
                         </td>
                         <td className="px-6 py-4">
                           <div className="flex items-center text-sm text-slate-600 dark:text-slate-300">
                             <Clock size={14} className="mr-2 text-slate-400" />
-                            {`${new Date(item.period_start).toLocaleDateString()} - ${new Date(item.period_end).toLocaleDateString()}`}
+                            {`${new Date(item.period_start).toLocaleDateString('en-CA')} - ${new Date(item.period_end).toLocaleDateString('en-CA')}`}
                           </div>
                         </td>
                         <td className="px-6 py-4 text-right">
