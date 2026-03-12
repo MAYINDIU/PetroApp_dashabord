@@ -361,6 +361,42 @@ function Sidebar({
             </ul>
         
        
+           <ul className="mt-1">
+                <SidebarLinkGroup activecondition={pathname === "/wallet-and-transaction-list" || pathname.includes("/wallet-and-transaction-list")}>
+                  {(handleClick, open) => {
+                    return (
+                      <React.Fragment>
+                        <Link
+                          to="/wallet-and-transaction-list"
+                          className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 ${
+                            pathname === "/assignment-list" || pathname.includes("dashboard") || pathname.includes("/") 
+                              ? "" 
+                              : "hover:text-gray-900 dark:hover:text-white"
+                          }`}
+                          onClick={() => {
+                            handleClick();
+                            setSidebarExpanded(true);
+                          }}
+                        >
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center">
+                              <AiOutlineContainer 
+                                className={`shrink-0 fill-current ${pathname === "/wallet-and-transaction-list" || pathname.includes("dashboard") || pathname.includes("/wallet-and-transaction-list") 
+                                  ? 'text-violet-500' 
+                                  : 'text-gray-400 dark:text-gray-500'}`}
+                              />
+                              <span className="text-sm font-medium ml-4 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                          Transactions List
+                              </span>
+                            </div>
+                          </div>
+
+                        </Link>
+                      </React.Fragment>
+                    );
+                  }}
+                </SidebarLinkGroup>
+                   </ul>
 
             <ul className="mt-1">
                 <SidebarLinkGroup activecondition={pathname === "/transport-entry" || pathname.includes("/transport-entry")}>
@@ -548,6 +584,81 @@ function Sidebar({
                 </SidebarLinkGroup>
                    </ul>
 
+             <ul className="mt-1">
+                <SidebarLinkGroup activecondition={pathname === "/report-by-driver" || pathname.includes("/report-by-driver")}>
+                  {(handleClick, open) => {
+                    return (
+                      <React.Fragment>
+                        <Link
+                          to="/report-by-driver"
+                          className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 ${
+                            pathname === "/report-by-driver" || pathname.includes("dashboard") || pathname.includes("/report-by-driver") 
+                              ? "" 
+                              : "hover:text-gray-900 dark:hover:text-white"
+                          }`}
+                          onClick={() => {
+                            handleClick();
+                            setSidebarExpanded(true);
+                          }}
+                        >
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center">
+                              <AiOutlineContainer 
+                                className={`shrink-0 fill-current ${pathname === "/report-by-driver" || pathname.includes("dashboard") || pathname.includes("/multiple-driver-topup") 
+                                  ? 'text-violet-500' 
+                                  : 'text-gray-400 dark:text-gray-500'}`}
+                              />
+                              <span className="text-sm font-medium ml-4 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                        Report By Driver
+                              </span>
+                            </div>
+                          </div>
+
+                        </Link>
+                      </React.Fragment>
+                    );
+                  }}
+                </SidebarLinkGroup>
+                   </ul>
+
+                   
+                   
+    <ul className="mt-1">
+                <SidebarLinkGroup activecondition={pathname === "/summary-report" || pathname.includes("/summary-report")}>
+                  {(handleClick, open) => {
+                    return (
+                      <React.Fragment>
+                        <Link
+                          to="/summary-report"
+                          className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 ${
+                            pathname === "/summary-report" || pathname.includes("dashboard") || pathname.includes("/summary-report") 
+                              ? "" 
+                              : "hover:text-gray-900 dark:hover:text-white"
+                          }`}
+                          onClick={() => {
+                            handleClick();
+                            setSidebarExpanded(true);
+                          }}
+                        >
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center">
+                              <AiOutlineContainer 
+                                className={`shrink-0 fill-current ${pathname === "/summary-report" || pathname.includes("dashboard") || pathname.includes("/summary-report") 
+                                  ? 'text-violet-500' 
+                                  : 'text-gray-400 dark:text-gray-500'}`}
+                              />
+                              <span className="text-sm font-medium ml-4 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                      Summary Report
+                              </span>
+                            </div>
+                          </div>
+
+                        </Link>
+                      </React.Fragment>
+                    );
+                  }}
+                </SidebarLinkGroup>
+                   </ul>
 
                    
 

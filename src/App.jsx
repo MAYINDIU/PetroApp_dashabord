@@ -40,6 +40,9 @@ import ElectronicBill from './pages/StationPanel/ElectronicBill';
 import BillvatReport from './pages/StationPanel/BillvatReport';
 import LedgerReport from './pages/StationPanel/LedgerReport';
 import AdminTopup from './pages/TopUp/AdminTopup';
+import WalletAndTransanctionList from './pages/Transport_owner/WalletAndTransanctionList';
+import ReportByDriver from './pages/Transport_owner/ReportByDriver';
+import SummaryReport from './pages/Transport_owner/SummaryReport';
 
 function App() {
 
@@ -93,7 +96,10 @@ const queryClient = new QueryClient();
       <Route exact path="/transport-entry" element={<TransportEntry />} />
       <Route exact path="/create-driver" element={<CreateDriver />} />
       <Route exact path="/assign-driver" element={<AssignDriver />} />
-
+      <Route exact path="/wallet-and-transaction-list" element={<WalletAndTransanctionList />} />
+      <Route exact path="/report-by-driver" element={<ReportByDriver />} />
+      
+      <Route exact path="/summary-report" element={<SummaryReport />} />
 
       </Routes>
       
