@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import Swal from "sweetalert2";
-import { Trash2, Plus, Wallet, History, Eye } from "lucide-react";
+import { Trash2, Plus, Wallet, History, Eye, Settings, Zap } from "lucide-react";
 
 // Components
 import Sidebar from "../../partials/Sidebar";
@@ -113,6 +113,117 @@ const MultipleDriverTopup = () => {
     },
   });
 
+  // Mutation for Setting Daily Limit
+  const limitMutation = useMutation({
+    mutationFn: async (limit) => {
+      const empData = JSON.parse(localStorage.getItem("empData"));
+      const response = await fetch(
+        `https://alhamarahomesbd.com/cashless-fuel-api/public/api/v1/owner/drivers/limit`,
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${empData?.token}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            daily_limit: Number(limit),
+            apply_to_all: true,
+          }),
+        }
+      );
+      const result = await response.json();
+      if (!result.success) throw new Error(result.message || "Failed to set limit");
+      return result;
+    },
+    onSuccess: () => {
+      Swal.fire("Success", "Daily limit applied to all drivers.", "success");
+    },
+    onError: (error) => {
+      Swal.fire("Error", error.message, "error");
+    },
+  });
+
+  const handleSetGlobalLimit = async () => {
+    const { value: limit } = await Swal.fire({
+      title: "Set Daily Limit",
+      text: "Enter the daily fuel limit to be applied to ALL drivers.",
+      input: "number",
+      inputPlaceholder: "Enter amount (e.g. 10000)",
+      showCancelButton: true,
+      confirmButtonText: "Apply to All",
+      confirmButtonColor: "#4f46e5",
+      inputValidator: (value) => {
+        if (!value || value <= 0) {
+          return "Please enter a valid amount!";
+        }
+      },
+    });
+
+    if (limit) {
+      Swal.fire({
+        title: "Are you sure?",
+        text: `This will set a daily limit of ${limit} BDT for every driver in your fleet.`,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, Apply",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          limitMutation.mutate(limit);
+        }
+      });
+    }
+  };
+
+  // Mutation for Bulk Refill
+  const refillMutation = useMutation({
+    mutationFn: async () => {
+      const empData = JSON.parse(localStorage.getItem("empData"));
+      const response = await fetch(
+        `https://alhamarahomesbd.com/cashless-fuel-api/public/api/v1/owner/drivers/bulk-refill`,
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${empData?.token}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            note: "Daily auto refill",
+            cash_reference: "DAILY-REFILL-001",
+          }),
+        }
+      );
+      const result = await response.json();
+      if (!result.success) throw result;
+      return result;
+    },
+    onSuccess: () => {
+      Swal.fire("Success", "Bulk refill successful!", "success");
+      queryClient.invalidateQueries(["ownerTopups"]);
+    },
+    onError: (error) => {
+      const errorMessage = error?.errors
+        ? Object.values(error.errors).flat().join(" ")
+        : error.message || "Bulk refill failed";
+      Swal.fire("Error", errorMessage, "error");
+    },
+  });
+
+  const handleBulkRefill = () => {
+    Swal.fire({
+      title: "Run Bulk Refill?",
+      text: "This will automatically distribute funds to all eligible drivers based on their set daily limits. Continue?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, Refill All",
+      cancelButtonText: "Cancel",
+      confirmButtonColor: "#4f46e5",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        refillMutation.mutate();
+      }
+    });
+  };
+
   // Filter topups by searchTerm
   const filteredTopups =
     topupData?.transactions?.filter(
@@ -175,17 +286,33 @@ const MultipleDriverTopup = () => {
                     Distribute funds to multiple drivers at once.
                   </p>
                 </div>
-                <button
-                  onClick={() => setIsHistoryView(!isHistoryView)}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition border ${
-                    isHistoryView
-                      ? "bg-indigo-50 border-indigo-200 text-indigo-700"
-                      : "bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50"
-                  }`}
-                >
-                  <History size={16} />
-                  {isHistoryView ? "Top-up Form" : "Topup History"}
-                </button>
+                <div className="flex gap-2">
+                  <button
+                    onClick={handleBulkRefill}
+                    className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition border bg-indigo-600 text-white border-indigo-600 hover:bg-indigo-700 shadow-sm"
+                  >
+                    <Zap size={16} />
+                    Bulk Refill
+                  </button>
+                  <button
+                    onClick={handleSetGlobalLimit}
+                    className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition border bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50"
+                  >
+                    <Settings size={16} />
+                    Set Global Limit
+                  </button>
+                  <button
+                    onClick={() => setIsHistoryView(!isHistoryView)}
+                    className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition border ${
+                      isHistoryView
+                        ? "bg-indigo-50 border-indigo-200 text-indigo-700"
+                        : "bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50"
+                    }`}
+                  >
+                    <History size={16} />
+                    {isHistoryView ? "Top-up Form" : "Topup History"}
+                  </button>
+                </div>
               </div>
 
               <div className="p-6 space-y-6">

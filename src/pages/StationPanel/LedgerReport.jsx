@@ -115,7 +115,7 @@ const LedgerReport = () => {
                   <tr className="bg-slate-50/50 border-b border-slate-100">
                     <th className="px-6 py-4 text-[10px] font-bold text-slate-400 uppercase tracking-wider">#</th>
                     <th className="px-6 py-4 text-[10px] font-bold text-slate-400 uppercase tracking-wider">Date</th>
-                    <th className="px-6 py-4 text-[10px] font-bold text-slate-400 uppercase tracking-wider">Statement</th>
+                    <th className="px-6 py-4 text-[10px] font-bold text-slate-400 uppercase tracking-wider">Note</th>
                     <th className="px-6 py-4 text-[10px] font-bold text-emerald-600 uppercase tracking-wider text-right">Credit</th>
                     <th className="px-6 py-4 text-[10px] font-bold text-rose-500 uppercase tracking-wider text-right">Debit</th>
                     <th className="px-6 py-4 text-[10px] font-bold text-slate-400 uppercase tracking-wider text-center">Details</th>
@@ -130,7 +130,7 @@ const LedgerReport = () => {
                       <td className="px-6 py-4 text-slate-500 text-xs">{new Date(txn.created_at).toLocaleDateString('en-GB')}</td>
                       <td className="px-6 py-4">
                         <div className="flex flex-col">
-                          <span className="text-sm font-bold text-slate-700 capitalize">{txn.type.replace('_', ' ')}</span>
+                          {/* <span className="text-sm font-bold text-slate-700 capitalize">{txn.type.replace('_', ' ')}</span> */}
                           <span className="text-[10px] text-slate-400">{txn.meta?.note || 'Fuel Transaction'}</span>
                         </div>
                       </td>

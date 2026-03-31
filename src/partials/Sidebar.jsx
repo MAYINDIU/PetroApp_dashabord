@@ -747,7 +747,7 @@ function Sidebar({
                     { to: "/workerslist", label: "Workers", icon: Users },
                     { to: "/workerslist-logs", label: "Workers Logs", icon: ClipboardList },
                     { to: "/changefuel-price-request", label: "Fuel Price Request", icon: ClipboardList },
-                    { to: "/ledger-report", label: "Ledger", icon: ClipboardList },
+                    { to: "/ledger-report", label: "Sales List", icon: ClipboardList },
                     { to: "/purchase-order-list", label: "P.O Ledger", icon: ClipboardList },
                     { to: "/electronic-bill", label: "Electronic Bills", icon: ClipboardList },
                     { to: "/bill-vat-report", label: "VAT Reports", icon: ClipboardList },
