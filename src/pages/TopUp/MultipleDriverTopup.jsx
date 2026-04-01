@@ -36,6 +36,23 @@ const MultipleDriverTopup = () => {
     },
   });
 
+  // Fetch Owner Wallet
+  const { data: walletData } = useQuery({
+    queryKey: ["ownerWallet"],
+    queryFn: async () => {
+      const empData = JSON.parse(localStorage.getItem("empData"));
+      const res = await fetch(
+        `https://alhamarahomesbd.com/cashless-fuel-api/public/api/v1/owner/wallet`,
+        {
+          headers: { Authorization: `Bearer ${empData?.token}` },
+        }
+      );
+      const result = await res.json();
+      if (!result.success) throw new Error(result.message || "Failed to fetch wallet");
+      return result.data;
+    },
+  });
+
   const drivers = useMemo(
     () => driversData?.drivers?.map((d) => d.driver) || [],
     [driversData]
@@ -104,6 +121,7 @@ const MultipleDriverTopup = () => {
       Swal.fire("Success", "Bulk transaction successful!", "success");
       setSelectedDrivers([]);
       queryClient.invalidateQueries(["ownerTopups"]);
+      queryClient.invalidateQueries(["ownerWallet"]);
     },
     onError: (error) => {
       const errorMessage = error?.errors
@@ -199,6 +217,7 @@ const MultipleDriverTopup = () => {
     onSuccess: () => {
       Swal.fire("Success", "Bulk refill successful!", "success");
       queryClient.invalidateQueries(["ownerTopups"]);
+      queryClient.invalidateQueries(["ownerWallet"]);
     },
     onError: (error) => {
       const errorMessage = error?.errors
@@ -278,13 +297,18 @@ const MultipleDriverTopup = () => {
             <div className="bg-white dark:bg-slate-800 rounded-2xl border dark:border-slate-700 shadow-sm overflow-hidden">
               {/* Header */}
               <div className="bg-slate-50 dark:bg-slate-900 px-6 py-4 border-b dark:border-slate-700 flex items-center justify-between">
-                <div>
-                  <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100">
-                    Bulk Driver Top-up
-                  </h2>
-                  <p className="text-sm text-slate-500 dark:text-slate-300">
-                    Distribute funds to multiple drivers at once.
-                  </p>
+                <div className="flex items-center gap-4">
+                  <div className="p-2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-xl">
+                    <Wallet size={24} />
+                  </div>
+                  <div>
+                    <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100">
+                      Bulk Driver Top-up
+                    </h2>
+                    <p className="text-sm text-slate-500 dark:text-slate-300">
+                      Wallet Balance: <span className="font-bold text-indigo-600 dark:text-indigo-400">৳{walletData?.wallet?.balance?.toLocaleString() || '0'}</span>
+                    </p>
+                  </div>
                 </div>
                 <div className="flex gap-2">
                   <button
