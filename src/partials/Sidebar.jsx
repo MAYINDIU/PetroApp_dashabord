@@ -275,7 +275,7 @@ function Sidebar({
                 </SidebarLinkGroup>
                    </ul>
 
-<ul className="mt-1">
+                    <ul className="mt-1">
                 <SidebarLinkGroup activecondition={pathname === "/topup-for-bus-owner" || pathname.includes("/topup-for-bus-owner")}>
                   {(handleClick, open) => {
                     return (
@@ -311,7 +311,118 @@ function Sidebar({
                   }}
                 </SidebarLinkGroup>
                    </ul>
+
+  <ul className="mt-1">
+                <SidebarLinkGroup activecondition={pathname === "/account-summary" || pathname.includes("/account-summary")}>
+                  {(handleClick, open) => {
+                    return (
+                      <React.Fragment>
+                        <Link
+                          to="/account-summary"
+                          className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 ${
+                            pathname === "/account-summary" || pathname.includes("dashboard") || pathname.includes("/account-summary") 
+                              ? "" 
+                              : "hover:text-gray-900 dark:hover:text-white"
+                          }`}
+                          onClick={() => {
+                            handleClick();
+                            setSidebarExpanded(true);
+                          }}
+                        >
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center">
+                              <AiOutlineContainer 
+                                className={`shrink-0 fill-current ${pathname === "/account-summary" || pathname.includes("dashboard") || pathname.includes("/topup-for-bus-owner") 
+                                  ? 'text-violet-500' 
+                                  : 'text-gray-400 dark:text-gray-500'}`}
+                              />
+                              <span className="text-sm font-medium ml-4 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                       Account Summary
+                              </span>
+                            </div>
+                          </div>
+
+                        </Link>
+                      </React.Fragment>
+                    );
+                  }}
+                </SidebarLinkGroup>
+                   </ul>
+
                    
+                   
+                    <ul className="mt-1">
+                <SidebarLinkGroup activecondition={pathname === "/ledger-statement" || pathname.includes("/ledger-statement")}>
+                  {(handleClick, open) => {
+                    return (
+                      <React.Fragment>
+                        <Link
+                          to="/ledger-statement"
+                          className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 ${
+                            pathname === "/ledger-statement" || pathname.includes("dashboard") || pathname.includes("/ledger-statement") 
+                              ? "" 
+                              : "hover:text-gray-900 dark:hover:text-white"
+                          }`}
+                          onClick={() => {
+                            handleClick();
+                            setSidebarExpanded(true);
+                          }}
+                        >
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center">
+                              <AiOutlineContainer 
+                                className={`shrink-0 fill-current ${pathname === "/ledger-statement" || pathname.includes("dashboard") || pathname.includes("/topup-for-bus-owner") 
+                                  ? 'text-violet-500' 
+                                  : 'text-gray-400 dark:text-gray-500'}`}
+                              />
+                              <span className="text-sm font-medium ml-4 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                    Station Ledger Statement
+                              </span>
+                            </div>
+                          </div>
+
+                        </Link>
+                      </React.Fragment>
+                    );
+                  }}
+                </SidebarLinkGroup>
+                   </ul>
+                     <ul className="mt-1">
+                <SidebarLinkGroup activecondition={pathname === "/leadger-Transport-owner" || pathname.includes("/leadger-Transport-owner")}>
+                  {(handleClick, open) => {
+                    return (
+                      <React.Fragment>
+                        <Link
+                          to="/leadger-Transport-owner"
+                          className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 ${
+                            pathname === "/leadger-Transport-owner" || pathname.includes("dashboard") || pathname.includes("/leadger-Transport-owner") 
+                              ? "" 
+                              : "hover:text-gray-900 dark:hover:text-white"
+                          }`}
+                          onClick={() => {
+                            handleClick();
+                            setSidebarExpanded(true);
+                          }}
+                        >
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center">
+                              <AiOutlineContainer 
+                                className={`shrink-0 fill-current ${pathname === "/leadger-Transport-owner" || pathname.includes("dashboard") || pathname.includes("/topup-for-bus-owner") 
+                                  ? 'text-violet-500' 
+                                  : 'text-gray-400 dark:text-gray-500'}`}
+                              />
+                              <span className="text-sm font-medium ml-4 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                   Leadger Transport owner
+                              </span>
+                            </div>
+                          </div>
+
+                        </Link>
+                      </React.Fragment>
+                    );
+                  }}
+                </SidebarLinkGroup>
+                   </ul>
             
              </div>
              )}

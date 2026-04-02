@@ -43,6 +43,9 @@ import AdminTopup from './pages/TopUp/AdminTopup';
 import WalletAndTransanctionList from './pages/Transport_owner/WalletAndTransanctionList';
 import ReportByDriver from './pages/Transport_owner/ReportByDriver';
 import SummaryReport from './pages/Transport_owner/SummaryReport';
+import AccountSummaryAdmin from './pages/Accounts/AccountSummaryAdmin';
+import LeaderStatement from './pages/Accounts/LeaderStatement';
+import LeadgerTransportowner from './pages/Accounts/LeadgerTransportowner';
 
 function App() {
 
@@ -66,6 +69,14 @@ const queryClient = new QueryClient();
     <Route exact path="/multiple-driver-topup" element={<MultipleDriverTopup />} />
 
     <Route exact path="/station-ledger" element={<StationLedger />} />
+    <Route exact path="/account-summary" element={<AccountSummaryAdmin />} />
+    <Route exact path="/ledger-statement" element={<LeaderStatement />} />
+        <Route exact path="/leadger-Transport-owner" element={<LeadgerTransportowner />} />
+    
+
+
+
+
     <Route exact path="/settlement-list" element={<SettelementListAdmin />} />
     <Route exact path="/settlement-list-station" element={<SettelementStation />} />
   
