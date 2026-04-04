@@ -423,6 +423,42 @@ function Sidebar({
                   }}
                 </SidebarLinkGroup>
                    </ul>
+                    <ul className="mt-1">
+                <SidebarLinkGroup activecondition={pathname === "/trial-balance" || pathname.includes("/trial-balance")}>
+                  {(handleClick, open) => {
+                    return (
+                      <React.Fragment>
+                        <Link
+                          to="/trial-balance"
+                          className={`block text-gray-800 dark:text-gray-100 truncate transition duration-150 ${
+                            pathname === "/trial-balance" || pathname.includes("dashboard") || pathname.includes("/trial-balance") 
+                              ? "" 
+                              : "hover:text-gray-900 dark:hover:text-white"
+                          }`}
+                          onClick={() => {
+                            handleClick();
+                            setSidebarExpanded(true);
+                          }}
+                        >
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center">
+                              <AiOutlineContainer 
+                                className={`shrink-0 fill-current ${pathname === "/trial-balance" || pathname.includes("dashboard") || pathname.includes("/topup-for-bus-owner") 
+                                  ? 'text-violet-500' 
+                                  : 'text-gray-400 dark:text-gray-500'}`}
+                              />
+                              <span className="text-sm font-medium ml-4 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
+                  Trial Balance
+                              </span>
+                            </div>
+                          </div>
+
+                        </Link>
+                      </React.Fragment>
+                    );
+                  }}
+                </SidebarLinkGroup>
+                   </ul>
             
              </div>
              )}

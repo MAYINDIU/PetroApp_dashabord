@@ -46,6 +46,7 @@ import SummaryReport from './pages/Transport_owner/SummaryReport';
 import AccountSummaryAdmin from './pages/Accounts/AccountSummaryAdmin';
 import LeaderStatement from './pages/Accounts/LeaderStatement';
 import LeadgerTransportowner from './pages/Accounts/LeadgerTransportowner';
+import TrialBalance from './pages/Accounts/TrialBalance';
 
 function App() {
 
@@ -71,7 +72,8 @@ const queryClient = new QueryClient();
     <Route exact path="/station-ledger" element={<StationLedger />} />
     <Route exact path="/account-summary" element={<AccountSummaryAdmin />} />
     <Route exact path="/ledger-statement" element={<LeaderStatement />} />
-        <Route exact path="/leadger-Transport-owner" element={<LeadgerTransportowner />} />
+    <Route exact path="/leadger-Transport-owner" element={<LeadgerTransportowner />} />
+    <Route exact path="/trial-balance" element={<TrialBalance/>} />
     
 
 
