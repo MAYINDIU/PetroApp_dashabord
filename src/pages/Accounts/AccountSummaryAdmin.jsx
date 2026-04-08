@@ -240,7 +240,7 @@ const StationDetailsModal = ({ stationId, fromDate, toDate, onClose }) => {
   });
 
   return (
-    <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div className="fixed inset-0 bg-slate-900/60  z-50 flex items-center justify-center p-4">
       <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-2xl w-full max-w-4xl max-h-[90vh] flex flex-col relative animate-in fade-in zoom-in duration-200">
         <button
           onClick={onClose}

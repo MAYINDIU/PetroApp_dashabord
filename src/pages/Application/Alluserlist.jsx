@@ -243,9 +243,12 @@ const Alluserlist = () => {
             driver: "bg-green-100 text-green-700 border-green-200",
             bus_owner: "bg-orange-100 text-orange-700 border-orange-200"
         };
+        
+        const roleLabel = role.toLowerCase() === 'bus_owner' ? 'Transport Owner' : role.replace('_', ' ');
+        
         return (
             <span className={`px-3 py-1 rounded-full text-xs font-bold border uppercase tracking-wider ${styles[role.toLowerCase()] || 'bg-gray-100 text-gray-700'}`}>
-                {role.replace('_', ' ')}
+                {roleLabel}
             </span>
         );
     };

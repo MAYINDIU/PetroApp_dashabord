@@ -111,7 +111,7 @@ const Registration = () => {
             {/* Role Dropdown */}
             <select value={role} onChange={(e) => setRole(e.target.value)} className="w-full bg-slate-950/50 border border-slate-700 rounded-xl p-3.5 text-white placeholder:text-slate-400">
               <option value="">Select Role</option>
-              <option value="bus_owner">Bus Owner</option>
+              <option value="bus_owner">Transport Owner</option>
               <option value="station">Station</option>
             </select>
 
